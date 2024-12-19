@@ -9,6 +9,7 @@ bool IsFileEmpty(const std::string& filename);
 
 void ReadFilePrintNCnsl(const std::string& path1, const std::string& path2, const std::string& path3);
 
+void OpenFillFile(std::ofstream& fileName, std::string filePath, const int size, char* input);
 
 int main()
 {
@@ -26,6 +27,10 @@ int main()
 	std::ofstream fout;
 	std::ifstream fin;
 
+	std::string name = "Name.txt";
+	std::string counter = "Counter.txt";
+	std::string price = "Price.txt";
+
 	std::cout << "\t\tДобро пожаловать в приложение!\n\n";
 	std::cout << "В этом приложении вы можете записывать разные параметры в 3 файла и получать результат записей в виде таблицы\n";
 
@@ -39,208 +44,19 @@ int main()
 
 		if (chooseFile == 1)
 		{
-			if (IsFileEmpty("Name.txt") == false)
-			{
-				std::cout << "В файле уже есть текст.\n1. Дополнить текст\n2. Очистить файл и заполнить заново\n";
-				std::cin >> chooseAction;
-				std::cin.ignore();
-				if (chooseAction == 1)
-				{
-					fout.open("Name.txt", std::ofstream::app);
-					if (!fout.is_open())
-					{
-						std::cout << "Ошибка открытия файла!!\n";
-					}
-					else
-					{
-						for (int i = 0; i < size; i++)
-						{
-							std::cout << "Введите значение " << i + 1 << ": ";
-							std::cin.getline(input, 40);
-							fout << input << std::endl;
-						}
-					}
-					fout.close();
-				}
-				else if (chooseAction == 2)
-				{
-					fout.open("Name.txt");
-					if (!fout.is_open())
-					{
-						std::cout << "Ошибка открытия файла!!\n";
-					}
-					else
-					{
-						for (int i = 0; i < size; i++)
-						{
-							std::cout << "Введите значение " << i + 1 << ": ";
-							std::cin.getline(input, 40);
-							fout << input << std::endl;
-						}
-					}
-					fout.close();
-				}
-				else
-				{
-					std::cout << "Неверный ввод!!\n";
-				}
-			}
-			else
-			{
-				fout.open("Name.txt");
-				if (!fout.is_open())
-				{
-					std::cout << "Ошибка открытия файла!!\n";
-				}
-				else
-				{
-					for (int i = 0; i < size; i++)
-					{
-						std::cout << "Введите значение " << i + 1 << ": ";
-						std::cin.getline(input, 40);
-						fout << input << std::endl;
-					}
-				}
-				fout.close();
-			}
+			OpenFillFile(fout, name, size, input);
 		}
 
 
 		else if (chooseFile == 2)
 		{
-			if (IsFileEmpty("Counter.txt") == false)
-			{
-				std::cout << "В файле уже есть текст.\n1. Дополнить текст\n2. Очистить файл и заполнить заново\n";
-				std::cin >> chooseAction;
-				std::cin.ignore();
-				if (chooseAction == 1)
-				{
-					fout.open("Counter.txt", std::ofstream::app);
-					if (!fout.is_open())
-					{
-						std::cout << "Ошибка открытия файла!!\n";
-					}
-					else
-					{
-						for (int i = 0; i < size; i++)
-						{
-							std::cout << "Введите значение " << i + 1 << ": ";
-							std::cin.getline(input, 40);
-							fout << input << std::endl;
-						}
-					}
-					fout.close();
-				}
-				else if (chooseAction == 2)
-				{
-					fout.open("Counter.txt");
-					if (!fout.is_open())
-					{
-						std::cout << "Ошибка открытия файла!!\n";
-					}
-					else
-					{
-						for (int i = 0; i < size; i++)
-						{
-							std::cout << "Введите значение " << i + 1 << ": ";
-							std::cin.getline(input, 40);
-							fout << input << std::endl;
-						}
-					}
-					fout.close();
-				}
-				else
-				{
-					std::cout << "Неверный ввод!!\n";
-				}
-			}
-			else
-			{
-				fout.open("Counter.txt");
-				if (!fout.is_open())
-				{
-					std::cout << "Ошибка открытия файла!!\n";
-				}
-				else
-				{
-					for (int i = 0; i < size; i++)
-					{
-						std::cout << "Введите значение " << i + 1 << ": ";
-						std::cin.getline(input, 40);
-						fout << input << std::endl;
-					}
-				}
-				fout.close();
-			}
+			OpenFillFile(fout, counter, size, input);
 		}
 
 
 		else if (chooseFile == 3)
 		{
-			if (IsFileEmpty("Price.txt") == false)
-			{
-				std::cout << "В файле уже есть текст.\n1. Дополнить текст\n2. Очистить файл и заполнить заново\n";
-				std::cin >> chooseAction;
-				std::cin.ignore();
-				if (chooseAction == 1)
-				{
-					fout.open("Price.txt", std::ofstream::app);
-					if (!fout.is_open())
-					{
-						std::cout << "Ошибка открытия файла!!\n";
-					}
-					else
-					{
-						for (int i = 0; i < size; i++)
-						{
-							std::cout << "Введите значение " << i + 1 << ": ";
-							std::cin.getline(input, 40);
-							fout << input << std::endl;
-						}
-					}
-					fout.close();
-				}
-				else if (chooseAction == 2)
-				{
-					fout.open("Price.txt");
-					if (!fout.is_open())
-					{
-						std::cout << "Ошибка открытия файла!!\n";
-					}
-					else
-					{
-						for (int i = 0; i < size; i++)
-						{
-							std::cout << "Введите значение " << i + 1 << ": ";
-							std::cin.getline(input, 40);
-							fout << input << std::endl;
-						}
-					}
-					fout.close();
-				}
-				else
-				{
-					std::cout << "Неверный ввод!!\n";
-				}
-			}
-			else
-			{
-				fout.open("Price.txt");
-				if (!fout.is_open())
-				{
-					std::cout << "Ошибка открытия файла!!\n";
-				}
-				else
-				{
-					for (int i = 0; i < size; i++)
-					{
-						std::cout << "Введите значение " << i + 1 << ": ";
-						std::cin.getline(input, 40);
-						fout << input << std::endl;
-					}
-				}
-				fout.close();
-			}
+			OpenFillFile(fout, price, size, input);
 		}
 		else
 		{
@@ -252,9 +68,7 @@ int main()
 		std::cin >> totalChoose;
 	} while (totalChoose != 'n');
 	
-	std::string name = "Name.txt";
-	std::string counter = "Counter.txt";
-	std::string price = "Price.txt";
+	
 
 	ReadFilePrintNCnsl(name, counter, price);
 
@@ -320,5 +134,74 @@ void ReadFilePrintNCnsl(const std::string& path1, const std::string& path2, cons
 			std::cout << "\t" << informationPrint[i][j] << "\t";
 		}
 		std::cout << "\n";
+	}
+}
+
+void OpenFillFile(std::ofstream& fileName, std::string filePath, const int size, char* input)
+{
+	int chooseAction{};
+	if (IsFileEmpty(filePath) == false)
+	{
+		std::cout << "В файле уже есть текст.\n1. Дополнить текст\n2. Очистить файл и заполнить заново\n";
+		std::cin >> chooseAction;
+		std::cin.ignore();
+		if (chooseAction == 1)
+		{
+			fileName.open(filePath, std::ofstream::app);
+			if (!fileName.is_open())
+			{
+				std::cout << "Ошибка открытия файла!!\n";
+			}
+			else
+			{
+				for (int i = 0; i < size; i++)
+				{
+					std::cout << "Введите значение " << i + 1 << ": ";
+					std::cin.getline(input, 40);
+					fileName << input << std::endl;
+				}
+			}
+			fileName.close();
+		}
+		else if (chooseAction == 2)
+		{
+			fileName.open(filePath);
+			if (!fileName.is_open())
+			{
+				std::cout << "Ошибка открытия файла!!\n";
+			}
+			else
+			{
+				for (int i = 0; i < size; i++)
+				{
+					std::cout << "Введите значение " << i + 1 << ": ";
+					std::cin.getline(input, 40);
+					fileName << input << std::endl;
+				}
+			}
+			fileName.close();
+		}
+		else
+		{
+			std::cout << "Неверный ввод!!\n";
+		}
+	}
+	else
+	{
+		fileName.open(filePath);
+		if (!fileName.is_open())
+		{
+			std::cout << "Ошибка открытия файла!!\n";
+		}
+		else
+		{
+			for (int i = 0; i < size; i++)
+			{
+				std::cout << "Введите значение " << i + 1 << ": ";
+				std::cin.getline(input, 40);
+				fileName << input << std::endl;
+			}
+		}
+		fileName.close();
 	}
 }
