@@ -125,7 +125,7 @@ void ReadFilePrintNCnsl(const std::string& path1, const std::string& path2, cons
 	fin2.close();
 	fin3.close();
 
-	std::cout << "ID\tНазвание\tКол-во\tЦена\n";
+	std::cout << "ID\tНазвание\tКол-во\t\tЦена\n";
 	for (int i = 0; i < informationPrint.size(); i++)
 	{
 		std::cout << i + 1 << ") ";
